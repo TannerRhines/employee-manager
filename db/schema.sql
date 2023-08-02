@@ -1,5 +1,3 @@
-
-
 DROP DATABASE IF EXISTS company_db;
 CREATE DATABASE company_db;
 
@@ -33,9 +31,12 @@ CREATE TABLE employee (
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INT NOT NULL,
-  manager_id INT REFERENCES employee(id),
+  manager_id INT, -- Make the manager_id nullable
 
   PRIMARY KEY (id),
   FOREIGN KEY (role_id) 
-    REFERENCES role(id)
+    REFERENCES role(id),
+  FOREIGN KEY (manager_id) -- Add foreign key constraint for manager_id
+    REFERENCES employee(id)
 );
+
