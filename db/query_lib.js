@@ -5,6 +5,8 @@ class DBQuery {
     this.db = db;
   }
 
+
+// add a department 
   addDept(data) {
     const values = [data.name];
     return this.db
@@ -15,6 +17,7 @@ class DBQuery {
         );
   }
 
+//   query to add a role 
   addRole(data) {
     const values = [data.title, data.salary, data.department_id];
     return this.db
@@ -27,6 +30,7 @@ class DBQuery {
         );
   }
 
+// add a new employee
   addEmp(data) {
     const values = [data.first, data.last, data.role_id, data.manager_id];
     return this.db
@@ -39,6 +43,8 @@ class DBQuery {
       )
   }
 
+
+//   delete an employee
   deleteEmp(data) {
     const values = [data.emp_id];
     return this.db
@@ -50,6 +56,8 @@ class DBQuery {
       )
   }
 
+
+//   update an employee by their ID
   updateEmpRoleById(data) {
     const values = [data.role_id, data.emp_id];
     return this.db
@@ -62,6 +70,8 @@ class DBQuery {
       )
   }
 
+
+//   update a manager by ID
   updateEmpManagerById(data) {
     const values = [data.manager_id, data.emp_id];
     return this.db
@@ -74,6 +84,8 @@ class DBQuery {
       );
   }
 
+
+//   get all departments in the DB
   getDepts() {
     return this.db
       .promise()
@@ -83,6 +95,7 @@ class DBQuery {
     );
   }
 
+//   get department by ID
   getEmpByDeptId(data) {
     const values = [data.dept_id]
     return this.db
@@ -101,6 +114,7 @@ class DBQuery {
       );
   }
 
+//   get an employee by their manager's ID
   getEmpByMgrId(data) {
     const values = [data.manager_id]
     return this.db
@@ -117,6 +131,8 @@ class DBQuery {
       );
   }
 
+
+//   get a budget by department 
   getBudgetByDept() {
     return this.db
       .promise()
@@ -130,6 +146,8 @@ class DBQuery {
     );
   }
 
+
+//   get all roles 
   getRoles() {
     return this.db
       .promise()
@@ -143,7 +161,7 @@ class DBQuery {
       ORDER BY Department, r.id ASC`
       );
   }
-
+// get all role ID's
   getRoleIds(){
     return this.db
       .promise()
@@ -153,6 +171,7 @@ class DBQuery {
       );
   }
 
+//   get all employees
   getEmps() {
     return this.db
       .promise()
@@ -185,7 +204,7 @@ class DBQuery {
          FROM employee e`
         )
   }
-
+// get employees that aren't managers
   getNonManagers(){
     return this.db
     .promise()
@@ -196,6 +215,8 @@ class DBQuery {
   )
   }
 
+
+//   get managers 
   getManagers() {
     return this.db
       .promise()

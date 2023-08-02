@@ -4,7 +4,9 @@
     const sql = require('./db/query_lib');
     const cHelper = require('./lib/choiceHelper');
 
-// add an department
+
+
+// adds an department to the DB and validates name with an if statement
 const newDept = async () => {  
 
   const deptartment = await inquirer.prompt([
@@ -28,7 +30,7 @@ const newDept = async () => {
   chooseRequest();
 }
 
-// add an employee
+// adds an employee to the DB and validates name with an if statement
 const newEmp = async () => {
 
   const roleArr = await cHelper.roleChoices();
@@ -84,7 +86,7 @@ const newEmp = async () => {
  
 }
 
-// Add a role
+// Adds a new role w/ salary to the DB and validates name with an if statement if salary is not a number and name is empty
 const newRole = async () => {
 
   const choicesArr = await cHelper.deptChoices();
@@ -130,7 +132,7 @@ const newRole = async () => {
  
 }
 
-// Delete and Employee
+// Delete an Employee from the DB with choices from employee array
 // Bonus Objective
 const delEmp = async () => {
   const empArr = await cHelper.NonMgmtChoices();
@@ -151,7 +153,7 @@ const delEmp = async () => {
 
 }
 
-// Update an employees role
+// Update an employees role in the database with choices from employee array
 const updateEmpRole = async () => {
 
   const roleArr = await cHelper.roleChoices();
@@ -181,7 +183,7 @@ const updateEmpRole = async () => {
  
 }
 
-// Update an employees Manager
+// Update an employees Manager from the DB employee array and assign them a new manager 
 // Bonus Objective
 const updateEmpManager = async () => {
 
@@ -212,7 +214,7 @@ const updateEmpManager = async () => {
  
 }
 
-// View All Departments
+// View All Departments in the DB, get department table rows 
 const viewDepts = () => {
   sql.getDepts()
 
@@ -226,7 +228,7 @@ const viewDepts = () => {
   }) 
 }
 
-// View All Roles
+// View All Roles in the DB, get roles table rows
 const viewRoles = () => {
   sql.getRoles()
 
@@ -239,7 +241,7 @@ const viewRoles = () => {
       chooseRequest();
   }) 
 }
-// View All employees
+// View All employees in the DB
 const viewEmps = () => {
   sql.getEmps()
 
@@ -253,7 +255,7 @@ const viewEmps = () => {
   }) 
 }
 
-// View All Departments and their Budget 
+// View All Departments and their Budgets from the DB
 // Bonus Objective
 const viewBudgets = async () => {
 
@@ -269,7 +271,7 @@ const viewBudgets = async () => {
   }) 
 }
 
-// View All Employees in a specific Department
+// This views all Employees based on a specific Department in the DB
 // Bonus Objective
 const viewEmpByDept = async () => {
 
@@ -296,7 +298,7 @@ const viewEmpByDept = async () => {
 
 }
 
-// View All Employees who report to a specific Manager
+// View All Employees who have a specific Manager
 // Bonus Objective
 const viewEmpByMgr = async () => {
 
@@ -323,6 +325,7 @@ const viewEmpByMgr = async () => {
 
 }
 
+// this is the initial inquirer prompt when running node server.js
 
 const chooseRequest = () => {
   inquirer.prompt([
