@@ -1,5 +1,5 @@
 # employee-manager
-a command line tool to help organize business departments
+a command line tool to help organize your many business departments to save time and money =) 
 
 REQUIRED
 -----------------
